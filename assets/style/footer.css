@@ -1,0 +1,23 @@
+.footer {
+    padding: 22px 0 30px;
+    border-top: 1px solid #E6E6E6;
+}
+
+.footer_container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+
+.header__logo {
+    display: block;
+    width: 76px;
+}
+
+.footer__socials {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 20px;
+}
