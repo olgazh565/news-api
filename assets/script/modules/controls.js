@@ -2,6 +2,9 @@ import {preload} from './helpers.js';
 import {renderHeadlines, renderSearchResult} from './render.js';
 import {getHeadlines, initFetch} from './serviceAPI.js';
 
+const searchSection = document.querySelector('.search-results-articles');
+const titleSearchSection = document.querySelector('.search-result-title-section');
+
 // запрос при выборе страны
 
 export const getArticlesByCountry = () => {
@@ -9,7 +12,11 @@ export const getArticlesByCountry = () => {
 
     selectCountry.addEventListener('change', async ({target}) => {
         await getHeadlines(target.value)
-                .then(data => renderHeadlines(data));
+                .then(data => {
+                    renderHeadlines(data);
+                    searchSection.classList.remove('is-open');
+                    titleSearchSection.classList.remove('is-open');
+                });
     });
 };
 
@@ -17,8 +24,6 @@ export const getArticlesByCountry = () => {
 
 export const controlForm = () => {
     const form = document.querySelector('.header__form');
-    const searchSection = document.querySelector('.search-results-articles');
-    const titleSearchSection = document.querySelector('.search-result-title-section');
     const titleSearch = document.querySelector('.search-title');
 
     form.addEventListener('submit', (e) => {
@@ -38,6 +43,7 @@ export const controlForm = () => {
                 })
                 .finally(() => {
                     preload.remove();
+                    form.reset();
                 });
     });
 };

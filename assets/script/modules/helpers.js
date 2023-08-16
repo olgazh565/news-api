@@ -30,4 +30,4 @@ export const preload = {
     },
 };
 
-export default preload;
+

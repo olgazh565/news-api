@@ -45,6 +45,7 @@
 .form__input_search {
     border: none; 
     padding: 0 20px;
+    outline-offset: 1px;
 }
 
 .form__label_select {

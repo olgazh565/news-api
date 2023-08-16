@@ -8,7 +8,8 @@ export const createCard = item => {
 
     card.innerHTML = `
         <div class="card__img-wrapper">
-            <img class="card__img" src="${item.urlToImage ?? './assets/img/no-foto.jpg'}" alt="фото" onError="this.onerror=null;this.src='./assets/img/no-foto.jpg'">
+            <img class="card__img" src="${item.urlToImage ?? './assets/img/no-foto.jpg'}" alt="фото" 
+                onError="this.onerror=null;this.src='./assets/img/no-foto.jpg'">
         </div>
         <a class="card__link" href="${item.url}" target="_blank" title="${item.title}">${item.title}</a>
         <p class="card__description">${item.description ?? ''}</p>
