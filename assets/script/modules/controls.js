@@ -14,8 +14,7 @@ export const getArticlesByCountry = () => {
         preload.show();
         await getHeadlines(target.value)
                 .then(data => {
-                    // renderHeadlines(data);
-                    console.log('renderHeadlines(data): ', renderHeadlines(data));
+                    renderHeadlines(data);
                     searchSection.classList.remove('is-open');
                     titleSearchSection.classList.remove('is-open');
                 })
