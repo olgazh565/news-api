@@ -12,17 +12,19 @@ const init = async () => {
             .then(data => {
                 renderHeadlines(data);
 
+                // асинхронная загрузка изображений
+
                 const loading = [];
                 const imgs = document.querySelectorAll('.card__img');
-                console.log('imgs: ', imgs);
+
                 imgs.forEach((img) => {
                     loading.push(new Promise((resolve) => {
                         const url = img.src;
-                        const image = new Image();
-                        image.src = url;
+                        const imagePreload = new Image();
+                        imagePreload.src = url;
 
-                        image.onload = () => {
-                            img.src = image.src;
+                        imagePreload.onload = () => {
+                            img.src = imagePreload.src;
                             resolve();
                         };
                     }));
