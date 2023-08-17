@@ -4,14 +4,13 @@ const API_KEY = 'a3d7ff43c4d4449eadee5635afa69990';
 
 // запрос хедлайнов
 
-export const getHeadlines = async (country = 'ru', search = '') => {
+export const getHeadlines = async (country = 'us', search = '') => {
     try {
         const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${API_KEY}`);
         // const response = await fetch('https://gist.githubusercontent.com/Maksim-Methed/4566b524529c5076cff39764575b31e5/raw/c403579cc65a3cb45f945e25374ad5a2ccb0668c/headlines.json');
         const {articles} = await response.json();
 
-        const data = search ? articles.slice(0, 4) : articles.slice(0, 8);
-        return data;
+        return search ? articles.slice(0, 4) : articles.slice(0, 8);
     } catch (err) {
         console.error(err);
     }
@@ -25,8 +24,7 @@ export const getSearchResults = async (search) => {
         // const response = await fetch('https://gist.githubusercontent.com/Maksim-Methed/4566b524529c5076cff39764575b31e5/raw/c403579cc65a3cb45f945e25374ad5a2ccb0668c/search.json');
         const {articles} = await response.json();
 
-        const data = articles.slice(0, 8);
-        return data;
+        return articles.slice(0, 8);
     } catch (err) {
         console.error(err);
     }
@@ -36,6 +34,7 @@ export const getSearchResults = async (search) => {
 
 export const initFetch = (search, country) => {
     preload.show();
+
     return Promise.all([
         getHeadlines(country, search),
         getSearchResults(search),
